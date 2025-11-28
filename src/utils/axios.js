@@ -1,7 +1,7 @@
 import axios from "axios";
 
-// const baseURL='https://studysync-backend-zff6.onrender.com'
-const baseURL="http://localhost:8000"
+const baseURL='https://studysync-backend-zff6.onrender.com'
+// const baseURL="http://localhost:8000"
 console.log(baseURL)
 export const api = axios.create({
   baseURL: `${baseURL}/user`, // change to your backend URL
