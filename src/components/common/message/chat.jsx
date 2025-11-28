@@ -94,7 +94,8 @@ useEffect(() => {
   if (isLoading || Nextuser.isLoading) return <Loader />
   if(Authobj.loading){return<Loader/>}
   return (
-    <div className=" h-full w-full relative flex flex-col bg-white">
+    <div style={{ backgroundImage: `url(${chatbg})`,backgroundSize: "contain",
+    backgroundPosition: "center", }} className=" h-[calc(100vh-64px)] w-full relative flex flex-col bg-white">
       {/* Header */}
       <div className="bg-white  border-b  border-zinc-200 shadow-sm">
     
@@ -129,8 +130,7 @@ useEffect(() => {
       </div>
 
       {/* Messages */}
-      <div  ref={containerRef} style={{ backgroundImage: `url(${chatbg})`,backgroundSize: "contain",
-    backgroundPosition: "center", }} className=" overflow-y-auto h-[calc(100vh-140px)]   p-2 md:p-6 flex flex-col gap-3 scrollbar-thin scrollbar-thumb-zinc-300 scrollbar-track-transparent">
+      <div  ref={containerRef}  className=" overflow-y-auto    p-2 md:p-6 flex flex-col gap-3 scrollbar-thin scrollbar-thumb-zinc-300 scrollbar-track-transparent">
         <div className='h-full'>{chat.map((msg, idx) => {
           const isOwn = msg.sender === user._id;
           const showAvatar = idx === 0 || chat[idx - 1].sender !== msg.sender;
@@ -174,8 +174,12 @@ useEffect(() => {
         })}
         </div>
         <div ref={messagesEndRef}/>
-            <div className="bg-transparent  sticky bottom-0  w-full ">
-        <div className="flex items-end gap-2 max-w-4xl mx-auto">
+          
+      </div>
+
+      {/* Input */}
+    <div className="bg-transparent  absolute bottom-5  w-full ">
+        <div className="flex items-end gap-2 max-w-2xl mx-auto">
           <div className="flex-1 flex items-center gap-2 bg-zinc-800 border border-zinc-200 rounded-full px-4 py-2 transition-all">
             <button className="flex-shrink-0 p-1.5 hover:bg-zinc-200 rounded-full transition-colors">
               <svg className="w-5 h-5 text-zinc-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -219,10 +223,6 @@ useEffect(() => {
       
         </div>
       </div>
-      </div>
-
-      {/* Input */}
-  
 
       <style jsx>{`
         @keyframes slideIn {

@@ -5,7 +5,25 @@ import { FiHome, FiSearch, FiMessageSquare, FiStar, FiCalendar, FiSettings } fro
 import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import api from '../../utils/axios';
-
+ export const logout = async () => {
+    try {
+      const logoutobj = await api.post("v1/logout");
+      console.log(logoutobj);
+      localStorage.removeItem("accessToken");
+      localStorage.clear();
+      sessionStorage.clear();
+      
+      toast.success("Logged out successfully!", {
+        position: "top-center",
+      });
+    } catch (error) {
+      console.error("Logout error:", error);
+      toast.error("Something went wrong during logout!");
+    } finally {
+      window.location.reload(true);
+      navigate("/login");
+    }
+  };
 export default function Sidebar({ open }) {
   const navigate = useNavigate();
   const user = useSelector((state) => state.auth.user);
@@ -25,25 +43,7 @@ export default function Sidebar({ open }) {
 
   const menuItems = user?.role === "student" ? studentMenu : user?.role === "teacher" ? teacherMenu : [];
 
-  const logout = async () => {
-    try {
-      const logoutobj = await api.post("v1/logout");
-      console.log(logoutobj);
-      localStorage.removeItem("accessToken");
-      localStorage.clear();
-      sessionStorage.clear();
-      
-      toast.success("Logged out successfully!", {
-        position: "top-center",
-      });
-    } catch (error) {
-      console.error("Logout error:", error);
-      toast.error("Something went wrong during logout!");
-    } finally {
-      window.location.reload(true);
-      navigate("/login");
-    }
-  };
+
 
   return (
     <aside

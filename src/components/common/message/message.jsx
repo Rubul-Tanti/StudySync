@@ -15,13 +15,13 @@ const user=useSelector(state=>state.auth.user)
     // if(isLoading)return<Loader/>
     // const user=data?.data
   return (
-    <div className="flex  sm:h-full  rounded-xl overflow-hidden shadow-sm border border-zinc-200">
+    <div className="flex   sm:h-full  rounded-xl overflow-hidden shadow-sm border border-zinc-200">
       {/* Sidebar */}
       <div
-        className={`w-full ${location.pathname.includes('chat') && 'md:block hidden'} md:w-1/3 bg-zinc-50  border-r border-zinc-200 flex flex-col`}
+        className={`w-full ${location.pathname.includes('chat') && 'md:block hidden'} md:w-1/3 bg-zinc-200  border-r border-zinc-200 flex flex-col`}
       >
         {/* Sidebar Header */}
-        <div className="px-5 md:block hidden py-4 border-b border-zinc-200 bg-white flex-shrink-0">
+        <div className="px-5  py-4 border-b border-zinc-200 bg-zinc-200 flex-shrink-0">
           <h2 className="text-lg font-semibold text-zinc-700">Messages</h2>
           <p className="text-xs text-zinc-500 mt-1">Your conversations</p>
         </div>

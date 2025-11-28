@@ -3,7 +3,8 @@ import { GoBell } from "react-icons/go";
 import webLogo from "../../../public/webLogo.png";
 import defaultProfile from "../../assets/images/defaultprofile.png";
 import { Link } from 'react-router-dom';
-
+import { logout } from './sidebar';
+import { IoLogOutOutline } from "react-icons/io5";
 const Header = () => {
   return (
     <header className="w-full sticky top-0 z-50 bg-white  border-b border-zinc-50">
@@ -42,6 +43,9 @@ const Header = () => {
             </button> */} 
 
             {/* Profile */}
+            <button onClick={logout} className='text-red-600 sm:hidden  flex gap-2 items-center text-[10px] rounded-sm p-[1px] border border-red-400 '>
+             <IoLogOutOutline/> Log out 
+            </button>
             <Link 
               to="/profile"
               className="flex flex-col items-center gap-0.5 px-2 sm:px-3 py-1.5 sm:py-2 
